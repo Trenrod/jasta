@@ -23,14 +23,16 @@ TODO: link demo
 
 # Components
 
-![Overview JASTA components](doc/diagrams/README/Overview JASTA component.png)
+![Overview JASTA components](doc/diagrams/README/OverviewJASTAComponents.png)
 
 <details>
 <summary><b>PlantUML code</summary>
 
 ```plantuml
 
-@startuml Overview JASTA component
+@startuml OverviewJASTAComponents
+
+title Overview JASTA components
 
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
