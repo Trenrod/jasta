@@ -1,0 +1,60 @@
+%TodoItemText_hover {
+	cursor: pointer;
+}
+
+.TodoItemRoot {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	padding: 0.125rem 0rem;
+}
+
+.TodoItemMenu {
+	flex: 0;
+	font-size: x-large;
+}
+
+.IconicFont {
+	font-family: iconmonstr-iconic-font;
+}
+
+.TodoItemMenuEdit {
+	font-family: iconmonstr-iconic-font;
+}
+
+.TodoItemText {
+	flex: 1;
+	font-size: large;
+	padding: 0.75rem 0.75rem;
+
+	&:hover {
+		@extend %TodoItemText_hover;
+	}
+}
+
+.TodoItemText_inprogress {
+	text-decoration: none;
+	background-color: #FFFF0020;
+
+	& {
+		@extend .TodoItemText
+	}
+}
+
+.TodoItemText_done {
+	text-decoration: line-through;
+	background-color: #00FF0020;
+
+	& {
+		@extend .TodoItemText
+	}
+}
+
+.TodoItemText_open {
+	text-decoration: none;
+	background-color: #FF000020;
+
+	& {
+		@extend .TodoItemText
+	}
+}
