@@ -2,7 +2,7 @@
 
 # JASTA (Just another simple TODO app)
 
-## Feature overview
+## Feature overview - First iteration MVP
 ## Dont use if
 - Dont trust people you share the links to your todo
 - Want roles like admin and dedicated read/write permissions
