@@ -23,7 +23,7 @@ TODO: link demo
 
 # Components
 
-![Overview JASTA components](doc\diagrams\README\Overview JASTA component.png)
+![Overview JASTA components](doc\diagrams\README\OverviewJASTAComponent.png)
 
 <details>
 <summary><b>PlantUML code</summary>
