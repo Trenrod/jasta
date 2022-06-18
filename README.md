@@ -1,3 +1,5 @@
+# Status: pre-alpha
+
 # JASTA (Just another simple TODO app)
 
 ## Feature overview
@@ -19,36 +21,53 @@
 TODO: add gifs
 TODO: link demo
 
-# System description
+# Components
+
+![Overview JASTA components](doc\diagrams\README\Overview JASTA component.png)
+
+<details>
+<summary><b>PlantUML code</summary>
 
 ```plantuml
+
+@startuml Overview JASTA component
+
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-Person(user, "User", "A user which wants to maintain todos in one or many todolists with other users")
-' Person(admin, "Administrator", "People that administrates the products via the new v1.1 components", $tags="v1.1")
-Container(jastaWebUI, "JASTA", "react", "Web app UI. To create todos. And manipulate items. Generates links containing permissions.")
-Container(caddy, "Caddy2", "Caddy2", "Handles all business logic (incl. new v1.1 extensions)", $tags="v1.0+v1.1")
-Container(api, "API", "Python, FastAPI", "Handles all business logic (incl. new v1.1 extensions)", $tags="v1.0+v1.1")
-ContainerDb(db, "Database", "SQLite", "Holds product, order and invoice information")
+!include <office/Services/web_services>
+!include <office/Servers/web_server>
+!include <office/Servers/server_generic>
+!include <office/sites/website>
+!include <office/databases/database>
 
-Rel(user, jastaWebUI, "CRUD on todolists and its todoitems.", "https")
-Rel(jastaWebUI, api, "Uses", "https")
-Rel_R(api, db, "Reads/Writes")
+Person(user, "User", "Person who wants to use JASTA to create and track todos.")
+Person(admin, "Admin", "Create and maintain JASTA instances")
 
-SHOW_LEGEND()
+Container(deployment, "Deployment Server", "Ansible, Terraform", "Create VM instances and provisioning JASTA",  $sprite="server_generic")
+
+System_Boundary(jasta, JASTA, "Docker-Compose") {
+    Container(webclient, "Web Client (SPA)", "React, Typescript", "Provides web apps to the browser. TLS termination. API Gateway and firewall.",  $sprite="website")
+
+    Container(caddy, "Web Server", "Caddy2, Go", "Provides web apps to the browser. TLS termination. API Gateway and firewall.",  $sprite="web_server")
+
+    Container(api, "API", "FastAPI, Python", "Provides interface for web client CRUD todolists and todos.",  $sprite="web_services")
+
+    Container(database, "SQLite Database", "SQLite", "Provides interface for web client CRUD todolists and todos.",  $sprite="database")
+}
+
+Rel(user, caddy, "browse to jasta.newawesome.org", "https")
+Rel(user, webclient, "Create and manipulate todolists and todos", "https")
+Rel_L(caddy, webclient, "delivers to users browser")
+Rel(webclient, api, "API calls for CRUD operations on todolists and todos", "https, json")
+Rel_R(api, database, "Read/Write", "tcp")
+Rel(admin, deployment, "Read/Write", "tcp")
+Rel(deployment, jasta, "Read/Write", "tcp")
+
+@enduml
 
 ```
 
-## Software components
-TODO: link
-### Frontend:
-- React (Typescript)
-- Recoil main state engine
-- No UI Framework
+</details>
 
-### Backend:
-- FastAPI
-- SQLite
-- Caddy2
-- Ansible
-- OVH
+
+
