@@ -13,7 +13,7 @@ function CreateTodo() {
 	return (
 		<>
 			<div className="RootCreateTodo">
-				<input ref={inputNameRef} className="RootCreateTodoInputText" type="text" placeholder="Todo name" />
+				<input ref={inputNameRef} className="RootCreateTodoInputText" type="text" />
 				<Button icon="im-plus" onClick={() => {
 					if (inputNameRef.current?.value) {
 						const value: string = inputNameRef.current?.value;

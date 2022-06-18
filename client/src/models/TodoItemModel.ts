@@ -1,4 +1,4 @@
-enum TodoItemModelState {
+export enum TodoItemModelState {
 	done = "done",
 	open = "open",
 	inprogress = "inprogress"
