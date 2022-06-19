@@ -28,8 +28,8 @@ TODO: link demo
 
 ```plantuml
 
-@startsalt home_screen_concept (id=SHOME)
-{+
+@startsalt home_screen_concept
+{
 <b>Jasta</b>
 .
 Enter name of the a
@@ -41,12 +41,72 @@ new TodoList.
 }
 @endsalt
 
-@startuml
-state "Home Screen" as State_Home_Screen
+@startsalt admin_first_enter_concept
+{
+<b>Todolist Administrator</b>
+.
+{ "[Todolistname]" | [ Update ] }
+.
+<b>If you lose the link below no recovery is possible.</b>
+Store this link to invite new user or
+edit todolist description.
+.
+{ Admin link | [ Clipboard ] }
+(<i>https://jasta.com/admin/[todolistid]/[admintoken]#[key]</i>)
+.
+--
+.
+Add new user for yourself or people you want to invite.
+.
+"Username        "
+.
+[ Create ]
+}
+@endsalt
 
-[*] --> State_Home_Screen: browse jasta.com
-State_Home_Screen: <img>
-State_Home_Screen -> State2: Logged In 
+
+@startsalt admin_with_user_concept
+{
+<b>Todolist Administrator</b>
+.
+{ "[Todolistname]" | [ Update ] }
+.
+<b>If you lose the link below no recovery is possible.</b>
+Store this link to invite new user or
+edit todolist description.
+.
+{ Admin link | [ Clipboard ] }
+(<i>https://jasta.com/admin/[todolistid]/[admintoken]#[key]</i>)
+.
+--
+.
+Userlist
+.
+{ TreNrod | [ Clipboard ] | [ Delete ] | [ Enter ]}
+(<i>https://jasta.com/todolist/[todolistid]/[usertokenid]#[key]</i>)
+.
+--
+.
+Add new user for yourself or people you want to invite.
+.
+"Username        "
+.
+[ Create ]
+}
+@endsalt
+
+@startuml
+state Start_Home <<start>>
+state Start_Admin <<start>>
+state "Home Screen" as State_Home_Screen
+state "Admin Screen New" as State_Admin_Screen_New
+state "Admin Screen With User" as State_Admin_Screen_With_User
+
+Start_Home --> State_Home_Screen: browse\njasta.com
+State_Home_Screen: <img https://github.com/Trenrod/jasta/raw/main/doc/diagrams/README/home_screen_concept.png>
+State_Home_Screen -> State_Admin_Screen_New: 1. Type todolist name \n2 Click [Create] button
+Start_Admin --> State_Admin_Screen_New: browse\nhttps://jasta.com/admin\n/[todolistid]/[admintoken]#[key]
+State_Admin_Screen_New --> State_Admin_Screen_With_User: 3. Type username TreNrod \n4 Click [Create] button
 ' State2: User can
 ' State2: - ....
 ' State2: - Go to the "Directories" tab
