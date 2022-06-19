@@ -21,6 +21,49 @@
 TODO: add gifs
 TODO: link demo
 
+# Concept
+
+<details>
+<summary><b>PlantUML code concept Wireframes</summary>
+
+```plantuml
+
+@startsalt home_screen_concept (id=SHOME)
+{+
+<b>Jasta</b>
+.
+Enter name of the a
+new TodoList.
+.
+"TodoListName  "
+.
+[ Create ]
+}
+@endsalt
+
+@startuml
+state "Home Screen" as State_Home_Screen
+
+[*] --> State_Home_Screen: browse jasta.com
+State_Home_Screen: <img>
+State_Home_Screen -> State2: Logged In 
+' State2: User can
+' State2: - ....
+' State2: - Go to the "Directories" tab
+' State2: - ....
+' State2: - Close window
+' State2 -> [*]
+' State2 -> State3: Going to the \ nDirectories tab
+' State3: User can
+' State3: - select "Directory Name"  
+' State3 -> State4: Selected directory \ n "Types of transport" 
+' State4: User can
+' State4: ...
+@enduml
+
+```
+</details>
+
 # Components
 
 ![Overview JASTA components](doc/diagrams/README/OverviewJASTAComponents.png)
