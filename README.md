@@ -141,7 +141,7 @@ Add new user for yourself or people you want to invite.
 { "                   " | [ Add ] }
 ---
 .
-{ <back:green><s>Drink enough water</s></back> | [Edit] | [Delete] }
+{ <s><back:green>Drink enough water</back></s> | [Edit] | [Delete] }
 }
 @endsalt
 @startuml ConceptBasicUIFlow
