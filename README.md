@@ -173,16 +173,19 @@ State_Admin_Screen_With_User: <img https://github.com/Trenrod/jasta/raw/main/doc
 [*] --> State_Todolist_New: browse\nhttps://jasta.com/todo\n/[todolistid]/[usertoken]#[key]
 
 State_Admin_Screen_With_User -> State_Todolist_New: 5. Click [ Enter ] as user TreNrod
-State_Todolist_New: Image here
+State_Todolist_New: <img https://github.com/Trenrod/jasta/raw/main/doc/diagrams/README/todolist_new.png>
 
 State_Todolist_New -> State_Todolist_Item_Open: 6. Enter Todo description\n 7. Click [Add] Button
-State_Todolist_Item_Open: Image here
+State_Todolist_Item_Open: <img https://github.com/Trenrod/jasta/raw/main/doc/diagrams/README/todolist_item_open.png>
+
 
 State_Todolist_Item_Open --> State_Todolist_Item_InProgress: 8. Click label "Drink more water"
-State_Todolist_Item_InProgress: Image here
+State_Todolist_Item_InProgress: <img https://github.com/Trenrod/jasta/raw/main/doc/diagrams/README/todolist_item_inprogress.png>
+
 
 State_Todolist_Item_InProgress --> State_Todolist_Item_Done: 9. Click label "Drink more water"
-State_Todolist_Item_Done: Image here
+State_Todolist_Item_Done: <img https://github.com/Trenrod/jasta/raw/main/doc/diagrams/README/todolist_item_done.png>
+
 
 State_Todolist_Item_Done -> [*]
 @enduml
