@@ -104,6 +104,46 @@ Add new user for yourself or people you want to invite.
 }
 @endsalt
 
+@startsalt todolist_new
+{
+<b>[Todolistname]</b>
+.
+{ "Drink enough water  " | [ Add ] }
+}
+@endsalt
+
+@startsalt todolist_item_open
+{
+<b>[Todolistname]</b>
+.
+{ "                   " | [ Add ] }
+---
+.
+{ <back:red>Drink enough water</back> | [Edit] | [Delete] }
+}
+@endsalt
+
+@startsalt todolist_item_inprogress
+{
+<b>[Todolistname]</b>
+.
+{ "                   " | [ Add ] }
+---
+.
+{ <back:orange>Drink enough water</back> | [Edit] | [Delete] }
+}
+@endsalt
+
+@startsalt todolist_item_done
+{
+<b>[Todolistname]</b>
+.
+{ "                   " | [ Add ] }
+---
+.
+{ <back:green><s>Drink enough water</s></back> | [Edit] | [Delete] }
+}
+@endsalt
 @startuml ConceptBasicUIFlow
 
 title Concept basic ui flow
@@ -113,15 +153,38 @@ state Start_Admin <<start>>
 state "Home Screen" as State_Home_Screen
 state "Admin Screen New" as State_Admin_Screen_New
 state "Admin Screen With User" as State_Admin_Screen_With_User
+state "New todolist" as State_Todolist_New
+state "Todolist with open Todo" as State_Todolist_Item_Open
+state "Todolist with in progress Todo" as State_Todolist_Item_InProgress
+state "Todolist with done Todo" as State_Todolist_Item_Done
 
 Start_Home --> State_Home_Screen: browse\njasta.com
 State_Home_Screen: <img https://github.com/Trenrod/jasta/raw/main/doc/diagrams/README/home_screen_concept.png>
+
 State_Home_Screen -> State_Admin_Screen_New: 1. Type todolist name \n2 Click [Create] button
+
 State_Admin_Screen_New: <img https://github.com/Trenrod/jasta/raw/main/doc/diagrams/README/admin_first_enter_concept.png>
+
 Start_Admin --> State_Admin_Screen_New: browse\nhttps://jasta.com/admin\n/[todolistid]/[admintoken]#[key]
 State_Admin_Screen_New --> State_Admin_Screen_With_User: 3. Type user name \n4 Click [Create] button
+
 State_Admin_Screen_With_User: <img https://github.com/Trenrod/jasta/raw/main/doc/diagrams/README/admin_with_user_concept.png>
 
+[*] --> State_Todolist_New: browse\nhttps://jasta.com/todo\n/[todolistid]/[usertoken]#[key]
+
+State_Admin_Screen_With_User -> State_Todolist_New: 5. Click [ Enter ] as user TreNrod
+State_Todolist_New: Image here
+
+State_Todolist_New -> State_Todolist_Item_Open: 6. Enter Todo description\n 7. Click [Add] Button
+State_Todolist_Item_Open: Image here
+
+State_Todolist_Item_Open --> State_Todolist_Item_InProgress: 8. Click label "Drink more water"
+State_Todolist_Item_InProgress: Image here
+
+State_Todolist_Item_InProgress --> State_Todolist_Item_Done: 9. Click label "Drink more water"
+State_Todolist_Item_Done: Image here
+
+State_Todolist_Item_Done -> [*]
 @enduml
 
 ```
