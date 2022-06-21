@@ -1,4 +1,18 @@
 # Status: pre-alpha
+- [x] UI concept
+- [x] System design concept
+- [ ] Setup CI/CD pipeline
+    - [ ] Terraform VM provisioning
+    - [ ] Ansible VM configuration
+    - [ ] Testenvironment
+    - [ ] Git commit hooks as trigger   
+- [ ] Frontend
+    - [ ] Add Storybook https://storybook.js.org/blog/ui-testing-playbook/
+    - [ ] Dockerize
+    - [ ] Implementation
+- [ ] Backend
+    - [ ] Local development setup script
+    - [ ] API Implementation
 
 # JASTA (Just another simple TODO app)
 
