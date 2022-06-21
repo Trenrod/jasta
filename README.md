@@ -12,7 +12,10 @@ Road to alpha
     - [ ] Implementation
 - [ ] Backend
     - [ ] Local development setup script
-    - [ ] Implementation
+    - [ ] Logging
+    - [ ] Monitoring
+    - [ ] Backup
+    - [ ] API Implementation
 
 # JASTA (Just another simple TODO app)
 
